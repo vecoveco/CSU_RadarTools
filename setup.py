@@ -71,12 +71,12 @@ if USE_CYTHON:
 else:
     EXT = '.f'
 
-EXTENSIONS = [Extension(PACKAGES[0] + '.calc_kdp_ray_fir',
-                        [PACKAGES[0] + '/calc_kdp_ray_fir' + EXT])]
+#EXTENSIONS = [Extension(PACKAGES[0] + '.calc_kdp_ray_fir',
+#                        [PACKAGES[0] + '/calc_kdp_ray_fir' + EXT])]
 INCLUDE_DIRS = [numpy.get_include(), '.']
 
-if USE_CYTHON:
-    EXTENSIONS = cythonize(EXTENSIONS)
+#if USE_CYTHON:
+#    EXTENSIONS = cythonize(EXTENSIONS)
 
 
 # Run setup
@@ -109,7 +109,7 @@ setup(name='csu_radartools',
           ],
       packages=PACKAGES,
       package_data={'csu_radartools': ['beta_function_parameters/*.csv']},
-      ext_modules=EXTENSIONS,
+      #ext_modules=EXTENSIONS,
       include_dirs=INCLUDE_DIRS,
       install_requires=['numpy', 'pandas', 'matplotlib', 'scipy', 'cython'],
       python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4',
