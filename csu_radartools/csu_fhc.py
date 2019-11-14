@@ -16,7 +16,7 @@ from __future__ import absolute_import
 from __future__ import print_function
 import numpy as np
 from .beta_functions import get_mbf_sets_summer
-from .calc_kdp_ray_fir import hid_beta_f
+#from .calc_kdp_ray_fir import hid_beta_f
 
 DEFAULT_WEIGHTS = {'DZ': 1.5, 'DR': 0.8, 'KD': 1.0, 'RH': 0.8, 'LD': 0.5,
                    'T': 0.4}
@@ -203,12 +203,12 @@ def _get_weight_sum(fhc_vars, weights, method, verbose):
 def _calculate_test(fhc_vars, weights, radar_data, sets,
                     varlist, weight_sum, c, sz):
     """Loop over every var to get initial value for each HID species 'test'"""
-#    test = (np.sum(np.array([fhc_vars[key] * weights[key] *
-#                            hid_beta(radar_data[key], sets[key]['a'][c],
-#                            sets[key]['b'][c], sets[key]['m'][c])
     test = (np.sum(np.array([fhc_vars[key] * weights[key] *
-                            hid_beta_f(sz, radar_data[key], sets[key]['a'][c],
+                            hid_beta(radar_data[key], sets[key]['a'][c],
                             sets[key]['b'][c], sets[key]['m'][c])
+#    test = (np.sum(np.array([fhc_vars[key] * weights[key] *
+#                            hid_beta_f(sz, radar_data[key], sets[key]['a'][c],
+#                            sets[key]['b'][c], sets[key]['m'][c])
             for key in varlist if key in radar_data.keys()]),
             axis=0))/weight_sum
     return test
