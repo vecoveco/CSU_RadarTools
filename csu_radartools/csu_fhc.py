@@ -236,25 +236,25 @@ def _get_test_list(fhc_vars, weights, radar_data, sets, varlist, weight_sum,
             if use_temp:
                 if pol_flag:
                     # *= multiplies by new value and stores in test
-                    test *= hid_beta_f(sz, radar_data['T'], sets['T']['a'][c],
+                    test *= hid_beta(sz, radar_data['T'], sets['T']['a'][c],
                                        sets['T']['b'][c], sets['T']['m'][c])
                     # print 'in loc 2'
                     # if test.max() > 1: #Maximum of test should never be > 1
                     #     print 'Fail loc 2, test.max() =', test.max()
                     #     return None
                 else:
-                    test = hid_beta_f(sz, radar_data['T'], sets['T']['a'][c],
+                    test = hid_beta(sz, radar_data['T'], sets['T']['a'][c],
                                       sets['T']['b'][c], sets['T']['m'][c])
             if fhc_vars['DZ']:
                 if pol_flag or use_temp:
-                    test *= hid_beta_f(
+                    test *= hid_beta(
                         sz, radar_data['DZ'], sets['DZ']['a'][c],
                         sets['DZ']['b'][c], sets['DZ']['m'][c])
                     # if test.max() > 1:  # Max of test should never be > 1
                     #     print 'Fail loc 3, test.max() =', test.max()
                     #     return None
                 else:
-                    test = hid_beta_f(sz, radar_data['DZ'], sets['DZ']['a'][c],
+                    test = hid_beta(sz, radar_data['DZ'], sets['DZ']['a'][c],
                                       sets['DZ']['b'][c], sets['DZ']['m'][c])
         elif 'linear' in method:  # Just a giant weighted sum
             if pol_flag:
